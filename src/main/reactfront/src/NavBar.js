@@ -12,6 +12,7 @@ const NavBar = () => {
                     {!isLoggedIn && <Link className="navbarMenu" to="/login">Login</Link>}
                     {isLoggedIn && isAdmin && <Link className="navbarMenu" to="/admin">관리자</Link>}
                     {isLoggedIn && <Link className="navbarMenu" to="/createAccount">계좌생성</Link>}
+                    {isLoggedIn && <Link className="navbarMenu" to="/transaction">계좌이체</Link>}
                     {isLoggedIn && <Link className="navbarMenu" to="/view">계좌보기</Link>}
                     {isLoggedIn && <Link className="navbarMenu" to="/logout">Logout</Link>}
                 </nav>

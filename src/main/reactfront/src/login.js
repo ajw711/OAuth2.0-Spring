@@ -55,17 +55,13 @@ const LoginForm = () => {
     return (
         <div className='login'>
             <h1>Login</h1>
-            {/*<form method='post' onSubmit={loginHandler}>*/}
-            {/*    <p><span className='label'>Username</span><input className='input-class' type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='username' /></p>*/}
-            {/*    <p><span className='label'>Password</span><input className='input-class' type="password" autoComplete='off' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='password' /></p>*/}
-            {/*    <input type="submit" value="Login" className='form-btn' />*/}
-            {/*</form>*/}
+
 
             <div className='social-login'>
                 <h2>소셜 로그인</h2>
                 <div>
-                    <a href="http://localhost:8080/oauth2/authorization/naver"><img className='social-icon' alt="naver" /></a>
-                    <a href="http://localhost:8080/oauth2/authorization/google"><img className='social-icon'  alt="google" /></a>
+                    <a href="http://localhost:8080/oauth2/authorization/naver"><img className='social-icon' src="naver.png" alt="naver"/></a>
+                    <a href="http://localhost:8080/oauth2/authorization/google"><img className='social-icon'  src="google.png" alt="google" /></a>
                 </div>
             </div>
         </div>

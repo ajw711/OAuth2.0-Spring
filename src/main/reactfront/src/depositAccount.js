@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const DepositAccount = () => {
     const [password, setPassword] = useState('');
@@ -9,6 +10,7 @@ const DepositAccount = () => {
     const [token, setToken] = useState('');
     const [termMonth, setTermMonth] = useState(0); // 기간 필드
     const interestRate = 3.5; // 이자율 고정값
+    const navigate = useNavigate();
 
     // 토큰을 localStorage에서 가져오거나 세팅하는 부분
     useEffect(() => {
@@ -39,7 +41,7 @@ const DepositAccount = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!passwordMatch) {
-            alert('Passwords do not match!');
+            alert('비밀번호가 일치하지 않습니다');
             return;
         }
         const data = {
@@ -57,7 +59,8 @@ const DepositAccount = () => {
                 }
             });
             if(response.ok) {
-                alert('Success: Password saved');
+                navigate("/");
+                alert('Success');
             }
 
         } catch (error) {

@@ -28,7 +28,7 @@ const Admin = () => {
                                 });
                                 setMessage(response.data);
                         } catch (error) {
-                                setMessage('You do not have access to this page.');
+                                setMessage('접근권한이 없는 페이지.');
                         }
                 };
                 if (token) {
@@ -48,7 +48,7 @@ const Admin = () => {
                         setShowUsers(true);
                         setShowAccounts(false);
                 } catch (error) {
-                        console.error('Failed to fetch users:', error);
+                        console.error('유저 에러:', error);
                 }
         };
 
@@ -63,7 +63,7 @@ const Admin = () => {
                         setShowUsers(false);
                         setShowAccounts(true);
                 } catch (error) {
-                        console.error('Failed to fetch accounts:', error);
+                        console.error('계좌 에러 :', error);
                 }
         };
 
@@ -76,7 +76,7 @@ const Admin = () => {
                         });
                         fetchUsers();
                 } catch (error) {
-                        console.error('Failed to delete user:', error);
+                        console.error('잘못된 유저 삭제:', error);
                 }
         };
 
@@ -89,7 +89,7 @@ const Admin = () => {
                         });
                         fetchAccounts();
                 } catch (error) {
-                        console.error('Failed to delete account:', error);
+                        console.error('잘못된 계좌 삭제:', error);
                 }
         };
 
@@ -107,11 +107,16 @@ const Admin = () => {
                                 <ul>
                                         {users.map(user => (
                                             <li key={user.id}>
-                                                    <span>{user.name}</span>
-                                                    <span>{user.customerName}</span>
-                                                    <span>{user.email}</span>
-                                                    <span>{user.createDate}</span>
-                                                    <span>{user.updateDate}</span>
+                                                    <span>회원이름 : {user.name}</span>
+                                                    <span> </span>
+                                                    <span>회원 아이디 : {user.customerName}</span>
+                                                    <span> </span>
+                                                    <span>회원 이메일 : {user.email}</span>
+                                                    <span> </span>
+                                                    <span>회원가입일자 : {user.createDate}</span>
+                                                    <span> </span>
+                                                    <span>회원업데이트일자 : {user.updateDate}</span>
+                                                    <span> </span>
                                                     <button onClick={() => deleteUser(user.customerName)}>삭제</button>
                                             </li>
                                         ))}
@@ -124,15 +129,24 @@ const Admin = () => {
                                 <ul>
                                         {accounts.map(account => (
                                             <li key={account.id}>
-                                                    <span>{account.customerName}</span>
-                                                    <span>{account.accountNumber}</span>
-                                                    <span>{account.balance}</span>
-                                                    <span>{account.interestRate}</span>
-                                                    <span>{account.termMonth}</span>
-                                                    <span>{account.createDate}</span>
-                                                    <span>{account.updateDate}</span>
-                                                    <span>{account.accountType}</span>
-                                                    <button onClick={() => deleteAccount(account.accountNumber)}>삭제</button>
+                                                    <span>회원이름 : {account.customerName}</span>
+                                                    <span> </span>
+                                                    <span>회원 계좌번호 : {account.accountNumber}</span>
+                                                    <span> </span>
+                                                    <span>계좌액 : {account.balance}</span>
+                                                    <span> </span>
+                                                    <span>금리 : {account.interestRate}</span>
+                                                    <span> </span>
+                                                    <span>기간 : {account.termMonth}</span>
+                                                    <span> </span>
+                                                    <span>가입일자 : {account.createDate}</span>
+                                                    <span> </span>
+                                                    <span>업데이트일자 : {account.updateDate}</span>
+                                                    <span> </span>
+                                                    <span>계좌 종류 : {account.accountType}</span>
+                                                    <span> </span>
+                                                    <button onClick={() => deleteAccount(account.accountNumber)}>삭제
+                                                    </button>
                                             </li>
                                         ))}
                                 </ul>

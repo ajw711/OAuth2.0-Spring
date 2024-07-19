@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const Remittance = () => {
     const [fromAccountNumber, setFromAccountNumber] = useState('');
     const [toAccountNumber, setToAccountNumber] = useState('');
     const [amount, setAmount] = useState(0);
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleFromAccountNumberChange = (e) => {
         setFromAccountNumber(e.target.value);
@@ -42,16 +44,18 @@ const Remittance = () => {
             });
 
             if (response.status === 200) {
-                alert('Success: Transfer completed');
+                navigate('/view')
+                alert('Success');
+
             } else {
-                alert('Transfer failed: ' + response.data);
+                alert('Transfer : ' + response.data);
             }
         } catch (error) {
             if (error.response && error.response.status === 400) {
-                alert('Transfer failed: ' + error.response.data);
+                alert('Transfer : ' + error.response.data);
             } else {
                 console.error('Error:', error);
-                alert('An unexpected error occurred.');
+                alert(' error .');
             }
         }
     };
@@ -81,7 +85,7 @@ const Remittance = () => {
                 <br/>
                 <br/>
                 <label>
-                    Amount:
+                    금액:
                     <input
                         type="number"
                         value={amount}

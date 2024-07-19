@@ -30,7 +30,7 @@ const AccountDetail = () => {
             });
             setAccounts(response.data);
         } catch (error) {
-            setError('Failed to fetch accounts');
+            setError('잘못된 계좌');
         } finally {
             setLoading(false);
         }
@@ -44,11 +44,14 @@ const AccountDetail = () => {
             <ul>
                 {accounts.map((account) => (
                     <li key={account.id}>
-                        <p>Account Type: {account.accountType}</p>
-                        <p>Account Number : {account.accountNumber}</p>
-                        <p>Balance: {account.balance}</p>
-                        <p>Name: {account.customerName}</p>
-                        <p>Create Date: {account.createDate}</p>
+                        <p>계좌 종류: {account.accountType}</p>
+                        <p>계좌 번호 : {account.accountNumber}</p>
+                        <p>츌금가능금액 : {account.balance}</p>
+                        <p>이름 : {account.customerName}</p>
+                        <p>개설일 : {account.createDate}</p>
+
+
+                        <br></br>
                     </li>
                 ))}
             </ul>

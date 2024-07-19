@@ -31,7 +31,7 @@ const Analysis = () => {
             setAnalysisData(response.data);
             setFilePath(response.data.filePath); // filePath 설정
         } catch (error) {
-            setError('Failed to fetch analysis data');
+            setError('잘못된 데이터');
         } finally {
             setLoading(false);
         }
@@ -54,7 +54,7 @@ const Analysis = () => {
             link.click();
             document.body.removeChild(link);
         } catch (error) {
-            setError('Failed to download file');
+            setError('잘못된 다운로드');
         }
     };
 
@@ -80,6 +80,8 @@ const Analysis = () => {
                         <li>최소 이체금액: {analysisData.minTransfer}</li>
                         <li>평균 입금액: {analysisData.avgDeposit}</li>
                         <li>평균 이체금액: {analysisData.avgTransfer}</li>
+
+                        <br></br>
                     </ul>
                     <button onClick={downloadFile}>Download Analysis File</button>
                 </div>

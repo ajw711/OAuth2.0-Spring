@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const GeneralAccount = () => {
     const [password, setPassword] = useState('');
@@ -7,6 +8,9 @@ const GeneralAccount = () => {
     const [balance, setBalance] = useState(0);
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [token, setToken] = useState('');
+    const navigate = useNavigate();
+
+
 
 
     // 토큰을 localStorage에서 가져오거나 세팅하는 부분
@@ -46,11 +50,11 @@ const GeneralAccount = () => {
             const response = await axios.post("http://localhost:8080/account/create/general", data, {
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': window.localStorage.getItem('Authorization') // 인증 토큰 추가
                     'Authorization': `${token}`
                 }
             });
-            alert('Success: Password saved');
+            navigate("/");
+            alert('Success');
             // 성공 시 필요한 작업 수행
         } catch (error) {
             console.error('Error:', error);
@@ -60,10 +64,10 @@ const GeneralAccount = () => {
 
     return (
         <div>
-            <h2>Create General Account</h2>
+            <h2>계좌만들기</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Password:
+                    비밀번호:
                     <input
                         type="password"
                         value={password}
@@ -72,7 +76,7 @@ const GeneralAccount = () => {
                 </label>
                 <br />
                 <label>
-                    Confirm Password:
+                    비밀번호확인:
                     <input
                         type="password"
                         value={confirmPassword}
@@ -82,7 +86,7 @@ const GeneralAccount = () => {
                 {!passwordMatch && <p style={{ color: 'red' }}>Passwords do not match!</p>}
                 <br />
                 <label>
-                    Balance:
+                    입금액:
                     <input
                         type="number"
                         value={balance}
@@ -90,7 +94,7 @@ const GeneralAccount = () => {
                     />
                 </label>
                 <br />
-                <button type="submit">Submit</button>
+                <button type="submit">생성</button>
             </form>
         </div>
     );

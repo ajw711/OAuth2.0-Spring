@@ -1,10 +1,12 @@
 import React, {useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const DepositTransaction = () => {
     const [amount, setAmount] = useState(0);
     //const [token, setToken] = useState('');
     const [accountNumber, setAccountNumber] = useState(0);
+    const navigate = useNavigate();
 
 
 
@@ -34,7 +36,8 @@ const DepositTransaction = () => {
                 }
             });
             if(response.status === 200){
-            alert('Success: transaction');
+                navigate("/view");
+            alert('Success');
             }
             // 성공 시 필요한 작업 수행
         } catch (error) {

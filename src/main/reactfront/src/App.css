@@ -51,6 +51,22 @@
   color: #61dafb;
 }
 
+.social-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.social-login {
+  border-top: 1px solid gray;
+  margin-top: 3rem;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
